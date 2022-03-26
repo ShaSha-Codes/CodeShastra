@@ -4,6 +4,8 @@ import Landing from './Pages/Landing'
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import WorkerManager from "./Pages/WorkerManager";
 import MenuAppBar from "./components/MenuAppBar";
+import Attendance from "./Pages/Attendance";
+import Violations from "./Pages/Violations";
 
 
 
@@ -17,6 +19,8 @@ function App() {
           <Route path="/" element={<MenuAppBar />}>
             <Route index element={<Landing />} />
             <Route path="/workermanager" element={<WorkerManager />} />
+            <Route path="/attendance" element={<Attendance />} />
+            <Route path="/violations" element={<Violations />} />
             
           </Route>
         </Routes>

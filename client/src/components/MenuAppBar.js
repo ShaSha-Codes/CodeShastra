@@ -12,6 +12,7 @@ import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Link, Outlet } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 
 export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(true);
@@ -30,9 +31,8 @@ export default function MenuAppBar() {
   };
 
   return (
-  
     <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
+      {/* <FormGroup>
         <FormControlLabel
           control={
             <Switch
@@ -43,7 +43,7 @@ export default function MenuAppBar() {
           }
           label={auth ? 'Logout' : 'Login'}
         />
-      </FormGroup>
+      </FormGroup> */}
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -51,12 +51,24 @@ export default function MenuAppBar() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: 3, ml: 2 }}
           >
-            <MenuIcon />
+            <Link to="/" style={{ textDecoration: 'none'  , color:'white'}}>
+              <HomeIcon />
+            </Link>
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Photos
+          <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
+            <Link to="/attendance" style={{ textDecoration: 'none'  , color:'white'}}>Attendance</Link>
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
+            <Link to="/violations" style={{ textDecoration: 'none' , color:'white' }}>Violations</Link>
+          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1}}
+          >
+            <Link to="/workermanager" style={{ textDecoration: 'none' , color:'white' }}>Manage Workers</Link>
           </Typography>
           {auth && (
             <div>
@@ -74,13 +86,13 @@ export default function MenuAppBar() {
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
@@ -94,6 +106,5 @@ export default function MenuAppBar() {
       </AppBar>
       <Outlet />
     </Box>
-   
   );
 }
