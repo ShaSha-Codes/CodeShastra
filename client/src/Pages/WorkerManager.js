@@ -87,7 +87,7 @@ function WorkerManager() {
 
             res.push(
                 <TableRow key={i}>
-                        <TableCell><img src={workerData[i].image}/></TableCell>
+                        <TableCell><img style={{borderRadius:"1px",width:"150px"}} src={workerData[i].image}/></TableCell>
                         <TableCell>{workerData[i].fname}</TableCell>
                         <TableCell>{workerData[i].lname}</TableCell>
                         <TableCell>{workerData[i].gender}</TableCell>
@@ -125,7 +125,7 @@ function WorkerManager() {
                 <Button onClick={showImage} variant="contained" color="primary">
                     Click Here
                 </Button>
-            <img src={imageSrc}/>
+            <img  src={imageSrc}/>
             <Box>
                 
                     <TextField
@@ -197,26 +197,27 @@ function WorkerManager() {
             </Stack>
         </Box>
 }
-
-        <TableContainer>
-            <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-                <TableRow>
-                    <TableCell>Image</TableCell>
-                    <TableCell>First Name</TableCell>
-                    <TableCell>Last Name</TableCell>
-                    <TableCell>Gender</TableCell>
-                    <TableCell>Age</TableCell>
-                    <TableCell>Address</TableCell>
-                    <TableCell>Options</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {renderRows()}
-                    
-            </TableBody>
-            </Table>
-        </TableContainer>
+        <Box m={5}>
+            <TableContainer>
+                <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Image</TableCell>
+                        <TableCell>First Name</TableCell>
+                        <TableCell>Last Name</TableCell>
+                        <TableCell>Gender</TableCell>
+                        <TableCell>Age</TableCell>
+                        <TableCell>Address</TableCell>
+                        <TableCell>Options</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {renderRows()}
+                </TableBody>
+                </Table>
+            </TableContainer>
+        </Box>
+        
     </Box>
   )
 }

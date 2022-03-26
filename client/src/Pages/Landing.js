@@ -8,9 +8,14 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid from "@mui/material/Grid";
-
+import { ReactSession } from 'react-client-session';
+import { useNavigate } from 'react-router';
 
 function Landing() {
+    ReactSession.setStoreType("sessionStorage");
+
+
+
     console.log('reload');
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -61,7 +66,9 @@ function Landing() {
         setRegIsTrue(false);
         setLogIsTrue(true);
     }
+    let navigate = useNavigate();
     async function sendLoginData(){
+      
       axios({
         method: "POST",
         data: {
@@ -70,7 +77,11 @@ function Landing() {
         },
         withCredentials: true,
         url: "http://localhost:4000/contractor/login",
-      }).then((res) => console.log(res));
+      }).then((res) =>{ 
+        console.log("Testing")
+        ReactSession.set("user", res)
+        navigate('/workermanager')
+      });
     }
   
     function sendRegData(){
