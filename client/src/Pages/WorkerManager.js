@@ -123,14 +123,14 @@ function WorkerManager() {
             res.push(
                 <TableRow key={i}>
                         <TableCell><img style={{borderRadius:"1px",width:"150px"}} src={workerData[i].image}/></TableCell>
-                        <TableCell>{workerData[i].fname}</TableCell>
-                        <TableCell>{workerData[i].lname}</TableCell>
-                        <TableCell>{workerData[i].gender}</TableCell>
-                        <TableCell>{workerData[i].age}</TableCell>
-                        <TableCell>{workerData[i].address}</TableCell>
+                        <TableCell sx={{ fontSize: "1.2rem" }} >{workerData[i].fname}</TableCell>
+                        <TableCell sx={{ fontSize: "1.2rem" }}>{workerData[i].lname}</TableCell>
+                        <TableCell sx={{ fontSize: "1.2rem" }}>{workerData[i].gender}</TableCell>
+                        <TableCell sx={{ fontSize: "1.2rem" }}>{workerData[i].age}</TableCell>
+                        <TableCell sx={{ fontSize: "1.2rem" }}>{workerData[i].address}</TableCell>
                         <TableCell >
                             <Box spacing={3}>
-                                <Button variant="contained" color="success" onClick={()=>handleEdit(workerData[i].fname)}>
+                                <Button variant="contained" color="success" sx={{mr:5}} onClick={()=>handleEdit(workerData[i].fname)}>
                                     Edit
                                 </Button>
                                 <Button onClick={()=>handleDelete(workerData[i].fname)} variant="contained" color="error">
@@ -147,120 +147,154 @@ function WorkerManager() {
     }
   return (
     <Box>
-        <Button onClick={()=>{
-            setForm((prevValue)=>{return prevValue?0:1})
-        }} variant="contained" color="success">
-            Add
-        </Button>
-        {form &&
-        <Box className=" Register"  p={3} sx={{width:"30%", border:1, borderRadius:1}}>
+      <Button
+        onClick={() => {
+          setForm((prevValue) => {
+            return prevValue ? 0 : 1;
+          });
+        }}
+        variant="contained"
+        color="success"
+        size="large"
+        sx={{ m: 5, width: "15%", float: "right" }}
+      >
+        Add
+      </Button>
+      {form && (
+        <Box
+          className=" Register"
+          p={3}
+          sx={{
+            width: "35%",
+            m: "auto",
+            mt: 4,
+            alignContent: "center",
+            border: 1,
+            borderRadius: 1,
+          }}
+        >
           <Stack p={1} spacing={3}>
-            <Typography m={1} sx={{textAlign:"center"}} variant="h4">Register</Typography>
-            <Webcam ref={webRef}/>
-                <Button onClick={showImage} variant="contained" color="primary">
-                    Click Here
-                </Button>
-            <img  src={imageSrc}/>
+            <Typography m={1} sx={{ textAlign: "center" }} variant="h4">
+              Register
+            </Typography>
+            <Webcam ref={webRef} />
+            <Button onClick={showImage} variant="contained" color="primary">
+              Click Here
+            </Button>
+            <img src={imageSrc} />
             <Box>
-                
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="First Name"
-                        name="fname"
-                        value={regWorkerData.fname} onChange={handleData}
-                        p={3}
-                        sx={{width:"43%"}}
-                    />
-                    &nbsp;&nbsp;&nbsp;
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Last Name"
-                        name="lname"
-                        value={regWorkerData.lname} onChange={handleData}
-                        sx={{width:"50%"}}
-                    />
+              <TextField
+                required
+                id="outlined-required"
+                label="First Name"
+                name="fname"
+                value={regWorkerData.fname}
+                onChange={handleData}
+                p={3}
+                sx={{ width: "43%" }}
+              />
+              &nbsp;&nbsp;&nbsp;
+              <TextField
+                required
+                id="outlined-required"
+                label="Last Name"
+                name="lname"
+                value={regWorkerData.lname}
+                onChange={handleData}
+                sx={{ width: "50%" }}
+              />
             </Box>
-                
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Gender"
-                    name="gender"
-                    type="gender"
-                    sx={{width:"50%"}}
-                    value={regWorkerData.gender} onChange={handleData}
-                
-                />
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Age"
-                    name="age"
-                    type="number"
-                    sx={{width:"50%"}}
-                    value={regWorkerData.age} onChange={handleData}
-                    
-                />
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Address"
-                    name="address"
-                    type="text"
-                    sx={{width:"80%"}}
-                    value={regWorkerData.address} onChange={handleData}
-                    
-                />
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Aadhar"
-                    name="aadhar"
-                    type="text"
-                    sx={{width:"80%"}}
-                    value={regWorkerData.aadhar} onChange={handleData}
-                    
-                />
 
-                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <Button sx={{width:"50%"}}variant="contained" size="large" onClick={submitWorkerData} >
-                    Register
+            <TextField
+              required
+              id="outlined-required"
+              label="Gender"
+              name="gender"
+              type="gender"
+              sx={{ width: "90%" }}
+              value={regWorkerData.gender}
+              onChange={handleData}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="Age"
+              name="age"
+              type="number"
+              sx={{ width: "90%" }}
+              value={regWorkerData.age}
+              onChange={handleData}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="Address"
+              name="address"
+              type="text"
+              sx={{ width: "90%" }}
+              value={regWorkerData.address}
+              onChange={handleData}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="Aadhar"
+              name="aadhar"
+              type="text"
+              sx={{ width: "90%" }}
+              value={regWorkerData.aadhar}
+              onChange={handleData}
+            />
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                sx={{ width: "50%", mr: 4 }}
+                variant="contained"
+                size="large"
+                onClick={submitWorkerData}
+              >
+                Register
+              </Button>
+              {editMode && (
+                <Button
+                  sx={{ width: "50%" }}
+                  variant="contained"
+                  size="large"
+                  onClick={updateWorkerData}
+                >
+                  Update
                 </Button>
-                {
-                    editMode && 
-                    <Button sx={{width:"50%"}}variant="contained" size="large" onClick={updateWorkerData} >
-                        Update
-                    </Button>
-                }
-                </Box>
-            </Stack>
+              )}
+            </Box>
+          </Stack>
         </Box>
-}
-        <Box m={5}>
-            <TableContainer>
-                <Table stickyHeader aria-label="sticky table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Image</TableCell>
-                        <TableCell>First Name</TableCell>
-                        <TableCell>Last Name</TableCell>
-                        <TableCell>Gender</TableCell>
-                        <TableCell>Age</TableCell>
-                        <TableCell>Address</TableCell>
-                        <TableCell>Options</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {renderRows()}
-                </TableBody>
-                </Table>
-            </TableContainer>
-        </Box>
-        
+      )}
+      <Box m={5}>
+        <TableContainer>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ fontSize: "1.5rem" }}>Image</TableCell>
+                <TableCell sx={{ fontSize: "1.5rem" }}>First Name</TableCell>
+                <TableCell sx={{ fontSize: "1.5rem" }}>Last Name</TableCell>
+                <TableCell sx={{ fontSize: "1.5rem" }}>Gender</TableCell>
+                <TableCell sx={{ fontSize: "1.5rem" }}>Age</TableCell>
+                <TableCell sx={{ fontSize: "1.5rem" }}>Address</TableCell>
+                <TableCell sx={{ fontSize: "1.5rem" }}>Options</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>{renderRows()}</TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
     </Box>
-  )
+  );
 }
 
 export default WorkerManager
