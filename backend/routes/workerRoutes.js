@@ -60,7 +60,7 @@ router.patch("/edit/:fname", (req, res) => {
 });
 
 router.get("/",(req,res)=>{
-    Worker.find({},function(err,docs){
+    Worker.find({date:req.params.date},function(err,docs){
         if(err) throw err
         res.send(docs)
     })

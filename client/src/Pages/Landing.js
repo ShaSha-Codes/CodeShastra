@@ -80,7 +80,7 @@ function Landing() {
       }).then((res) =>{ 
         console.log("Testing")
         ReactSession.set("user", res)
-        navigate('/workermanager')
+        navigate('/dashboard')
       });
     }
   

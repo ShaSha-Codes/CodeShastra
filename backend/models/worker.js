@@ -28,6 +28,10 @@ const worker=new mongoose.Schema({
     aadhar:{
         type:String,
         require:true
+    },
+    attendance:{
+        type:Boolean,
+        default:false
     }
 
 })
