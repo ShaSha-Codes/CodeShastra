@@ -8,15 +8,18 @@ import AddLocationIcon from '@mui/icons-material/AddLocation';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import CoPresentIcon from '@mui/icons-material/CoPresent';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
-
+import { useNavigate } from 'react-router';
 
 
 function Dashboard() {
+    let navigate = useNavigate();
   return (
     <Grid container spacing={2}>
         <Box m={5} sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
-            <Box m={5}>
+            <Box m={5} onClick={()=>{
+                navigate('/location')
+            }}>
                 
                     <Paper sx={{height:"200px",width:"300px"}} elevation={12}>
                         <Stack alignItems="center">
