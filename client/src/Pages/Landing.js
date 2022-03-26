@@ -11,7 +11,7 @@ import Grid from "@mui/material/Grid";
 
 
 function Landing() {
-
+    console.log('reload');
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
         ...theme.typography.body2,
@@ -42,12 +42,14 @@ function Landing() {
       setRegData((prevData)=>{
         return {...prevData,[event.target.name]:event.target.value}
       })
+      event.preventDefault();
     }
   
     function handleLoginData(event){
       setLogData((prevData)=>{
         return {...prevData,[event.target.name]:event.target.value}
       })
+       event.preventDefault();
     }
 
     function register(){
@@ -91,7 +93,7 @@ function Landing() {
     return (
       <div className="Landing">
 
-<Grid
+    <Grid
         container
         sx={{ minHeight: "100vh", paddingBottom: "4%" }}
         className="main"
@@ -104,31 +106,33 @@ function Landing() {
               boxShadow: 0,
               marginTop: "28%",
               backgroundColor: "transparent",
-              padding: 0,
+             
             }}
             className="indexpart1"
           >
-            <h1>SafeFirst</h1>
-            <h2 sx={{ color: "#fff" }}>Manage A Safer Workspace</h2>
+            <h1>SafetyFirst</h1>
+            <h2 sx={{ color: "#fff" }}>Manage a Safe Workspace</h2>
           </Item>
         </Grid>
        
      <Grid item xs={12} md={6} sx={{ padding: 0 }}>
-          <Item
+          <Box
             sx={{
               border: 0,
               boxShadow: 0,
               backgroundColor: "transparent",
               padding: 0,
-              marginTop: "10%",
+              marginTop: "15%",
             }}
             className="indexpart2"
           >
-          { regIsTrue && <Box className=" Register"  p={3} sx={{width:"50%", border:1, borderRadius:1}}>
+        <div className="formPart">
+          { regIsTrue && 
+          <Box className="Register"  p={3} sx={{width:"95%"}}>
           <Stack p={1} spacing={3}>
-            <Typography m={1} sx={{textAlign:"center"}} variant="h4">Register</Typography>
+            <Typography m={1} sx={{textAlign:"center", fontFamily:"'Inter', sans-serif"}} variant="h4">Register</Typography>
             <Box>
-              
+              <div className="inline">
                 <TextField
                     required
                     id="outlined-required"
@@ -136,17 +140,18 @@ function Landing() {
                     name="fname"
                     value={regData.fname} onChange={handleRegData}
                     p={3}
-                    sx={{width:"43%"}}
+                    sx={{width:"49%"}}
                   />
-                  &nbsp;&nbsp;&nbsp;
+                 
                   <TextField
                     required
                     id="outlined-required"
                     label="Last Name"
                     name="lname"
                     value={regData.lname} onChange={handleRegData}
-                    sx={{width:"50%"}}
+                    sx={{width:"49%"}}
                   />
+                  </div>
             </Box>
               
               <TextField
@@ -177,18 +182,19 @@ function Landing() {
                 
               />
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-              <Button sx={{width:"50%"}}variant="contained" size="large" onClick={sendRegData}>
+              <Button sx={{width:"49%"}}variant="contained" size="large" onClick={sendRegData}>
                 Register
               </Button>
             </Box>
-            <h4>
+            <h4 style={{textAlign:"center"}}>
                 Existing User?
                 <Button variant="text" onClick={login}>Login</Button>
              </h4>
           </Stack>
         </Box>}
   
-        {logIsTrue && <Box className="Login"  mt={3} p={3} sx={{width:"50%", border:1, borderRadius:1}}>
+        {logIsTrue && 
+        <Box className="Login"  mt={3} p={3} sx={{width:"95%"}}>
           <Stack p={1} spacing={3}>
             <Typography m={1} sx={{textAlign:"center"}} variant="h4">Login</Typography>
   
@@ -198,7 +204,8 @@ function Landing() {
                 label="Email"
                 name="email"
                 type="email"
-                value={logData.email} onChange={handleLoginData}
+                value={logData.email} 
+                onChange={handleLoginData}
               
               />
               <TextField
@@ -207,16 +214,17 @@ function Landing() {
                 label="Password"
                 name="password"
                 type="password"
-                value={logData.password} onChange={handleLoginData}
+                value={logData.password} 
+                onChange={handleLoginData}
                
               />
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-              <Button sx={{width:"50%"}}variant="contained" size="large" onClick={sendLoginData}>
+              <Button sx={{width:"49%"}}variant="contained" size="large" onClick={sendLoginData}>
                 Login
               </Button>
               </Box>
            
-              <h4>
+              <h4 style={{textAlign:"center"}}>
                 New User?
                 <Button variant="text" onClick={register}>Register</Button>
              </h4>
@@ -225,7 +233,8 @@ function Landing() {
           </Stack>
        
         </Box>}
-        </Item>
+        </div>
+        </Box>
           </Grid>
           </Grid>
       
