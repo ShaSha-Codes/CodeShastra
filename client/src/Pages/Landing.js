@@ -128,7 +128,7 @@ function Landing() {
           >
         <div className="formPart">
           { regIsTrue && 
-          <Box className="Register"  p={3} sx={{width:"95%"}}>
+          <Box className="Register"  p={2} sx={{width:"90%"}}>
           <Stack p={1} spacing={3}>
             <Typography m={1} sx={{textAlign:"center", fontFamily:"'Inter', sans-serif"}} variant="h4">Register</Typography>
             <Box>
@@ -194,7 +194,7 @@ function Landing() {
         </Box>}
   
         {logIsTrue && 
-        <Box className="Login"  mt={3} p={3} sx={{width:"95%"}}>
+        <Box className="Login"  mt={3} p={2} sx={{width:"95%"}}>
           <Stack p={1} spacing={3}>
             <Typography m={1} sx={{textAlign:"center"}} variant="h4">Login</Typography>
   
