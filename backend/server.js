@@ -8,6 +8,8 @@ const session =require("express-session")
 const bodyParser=require("body-parser")
 const userRoutes=require('./routes/userRoutes')
 const contractorRoutes=require('./routes/contractorRoutes')
+const workerRoutes=require('./routes/workerRoutes')
+
 
 const app=express();
 
@@ -42,6 +44,7 @@ require('./passportConfig')(passport)
 
 app.use('/user',userRoutes)
 app.use('/contractor',contractorRoutes)
+app.use('/worker',workerRoutes)
 
 
 
