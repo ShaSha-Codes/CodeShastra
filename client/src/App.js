@@ -18,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MenuAppBar />}>
             <Route index element={<Landing />} />
+            <Route path="/video" element={<FaceRecognition/>}/>
             <Route path="/workermanager" element={<WorkerManager />} />
             <Route path="/attendance" element={<Attendance />} />
             <Route path="/violations" element={<Violations />} />
