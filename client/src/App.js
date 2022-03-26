@@ -6,6 +6,8 @@ import WorkerManager from "./Pages/WorkerManager";
 import MenuAppBar from "./components/MenuAppBar";
 import Attendance from "./Pages/Attendance";
 import Violations from "./Pages/Violations";
+import FaceRecognition from './Pages/FaceRecognition'
+import Location from "./Pages/Location";
 
 
 
