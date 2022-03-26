@@ -17,8 +17,17 @@ import Webcam from "react-webcam";
 
 function WorkerManager() {
     const[workerData,setWorkerData]=React.useState([])
+    const[editMode,setEditMode]=React.useState(false)
+    const[updateName,setUpdateName]=React.useState("")
     const[form,setForm]=React.useState(0)
-    const [regWorkerData,setRegWorkerData]=React.useState({})
+    const [regWorkerData,setRegWorkerData]=React.useState({
+        fname:"",
+        lname:"",
+        gender:"",
+        aadhar:"",
+        age:"",
+        address:""
+    })
     const[imageSrc,setImageSrc]=React.useState("")
     const webRef=React.useRef(null)
 
@@ -30,7 +39,33 @@ function WorkerManager() {
         })
     }
 
+    async function handleEdit(fname){
+        await axios.get("http://localhost:4000/worker/get/"+fname).then(
+            (res)=>{
+                console.log(res)
+                setRegWorkerData(res.data)
+                setImageSrc(res.data.image)
+                setUpdateName(res.data.fname)
+                setEditMode(prevVal=>!prevVal)
+            }
+        )
+        setForm((prevValue)=>{return prevValue?0:1})
 
+    }
+
+    function updateWorkerData(){
+        axios.patch("http://localhost:4000/worker/edit/"+updateName,{
+                fname: regWorkerData.fname,
+                lname: regWorkerData.lname,
+                gender: regWorkerData.gender,
+                age: regWorkerData.age,
+                address: regWorkerData.address,
+                aadhar:regWorkerData.aadhar,
+                image:imageSrc
+            }).then(res=>{
+                console.log(res)
+            })
+        }
     function submitWorkerData(){
 
             axios({
@@ -53,7 +88,7 @@ function WorkerManager() {
     const showImage=()=>{
         setImageSrc(webRef.current.getScreenshot())
     }
-    console.log(imageSrc)
+    
     React.useEffect(async ()=>{
         refreshWorkerData()
     },[0])
@@ -65,7 +100,7 @@ function WorkerManager() {
         })
     }
 
-    console.log(workerData)
+    
 
     async function handleDelete(fname){
         console.log(fname)
@@ -95,7 +130,7 @@ function WorkerManager() {
                         <TableCell>{workerData[i].address}</TableCell>
                         <TableCell >
                             <Box spacing={3}>
-                                <Button variant="contained" color="success">
+                                <Button variant="contained" color="success" onClick={()=>handleEdit(workerData[i].fname)}>
                                     Edit
                                 </Button>
                                 <Button onClick={()=>handleDelete(workerData[i].fname)} variant="contained" color="error">
@@ -193,6 +228,12 @@ function WorkerManager() {
                 <Button sx={{width:"50%"}}variant="contained" size="large" onClick={submitWorkerData} >
                     Register
                 </Button>
+                {
+                    editMode && 
+                    <Button sx={{width:"50%"}}variant="contained" size="large" onClick={updateWorkerData} >
+                        Update
+                    </Button>
+                }
                 </Box>
             </Stack>
         </Box>

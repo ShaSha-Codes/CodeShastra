@@ -33,14 +33,26 @@ router.delete("/delete/:fname", (req, res) => {
       });
 });
 
+router.get("/get/:fname",async (req,res)=>{
+    Worker.findOne({"fname":req.params.fname}).then((worker)=>{
+        res.send(worker)
+    }).catch((err)=>{
+        res.send("Something went Wrong")
+    })
+})
 
-router.patch("/edit", (req, res, next) => {
-    Worker.updateOne({fname:req.body.fname, lname:req.body.lname},{
-        fname:req.body.fname1,
-        lname:req.body.lname1,
+
+router.patch("/edit/:fname", (req, res) => {
+    console.log(req.body)
+    console.log(req.params.fname)
+    Worker.updateOne({fname:req.params.fname},{
+        fname:req.body.fname,
+        lname:req.body.lname,
         gender:req.body.gender,
         age:req.body.age,
-        address:req.body.address
+        address:req.body.address,
+        aadhar:req.body.aadhar,
+        image:req.body.image
     },function(err){
         if(err) res.send("Something went wrong")
         else res.send("Worker Successfully Edited")
