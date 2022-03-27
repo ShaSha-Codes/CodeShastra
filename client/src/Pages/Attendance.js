@@ -83,15 +83,14 @@ function Attendance() {
               const box = resizedDetections[i].detection.box
               const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString() })
               drawBox.draw(canvasRef.current)
-              if(result.label=="Shaurya"){
+              
                 let index
                 for(let i=0;i<attendance.length;i++){
-                  if(attendance[i].fname=="Shaurya"){
+                  if(attendance[i].fname==result.label){
                     index=i
                   }
                 }
                 attendanceChanger(index)
-              }
               console.log(result.label);
           })
       },1000)
@@ -170,8 +169,10 @@ function Attendance() {
   
   function attendanceChanger(index){
     let data=JSON.parse(JSON.stringify(attendance))
-    data[index].attendance=!data[index].attendance
-    setAttendance(data)
+    console.log(data[index].attendance);
+    data[index].attendance= true;
+    console.log(data[index].attendance)
+    setAttendance(()=>{return(data)})
   }
   
   function renderRows() {

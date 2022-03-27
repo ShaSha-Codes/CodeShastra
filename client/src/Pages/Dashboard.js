@@ -17,37 +17,40 @@ function Dashboard() {
     <Grid container spacing={2}>
         <Box m={5} sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
+        <Grid item xs={12} md={6}>
             <Box m={5} onClick={()=>{
                 navigate('/location')
             }}>
                 
-                    <Paper sx={{height:"200px",width:"300px"}} elevation={12}>
+                    <Paper sx={{height:"300px",width:"400px",marginLeft:"auto",marginRight:"auto"}} elevation={12}>
                         <Stack alignItems="center">
-                            <AddLocationIcon sx={{marginTop:3,fontSize:100}}/>
+                            <AddLocationIcon sx={{marginTop:9,fontSize:100}}/>
                             <Typography variant="h6" component="h2">
                                     GeoLocator
                             </Typography>
                         </Stack>
                     </Paper>
                 
-            </Box>
+            </Box></Grid>
+            <Grid item xs={12} md={6}>
             <Box m={5}>
                 
-                    <Paper sx={{height:"200px",width:"300px"}} elevation={12}>
+                    <Paper sx={{height:"300px",width:"400px",marginLeft:"auto",marginRight:"auto"}} elevation={12}>
                         <Stack alignItems="center">
-                            <ManageAccountsIcon sx={{marginTop:3,fontSize:100}}/>
+                            <ManageAccountsIcon sx={{marginTop:9,fontSize:100}}/>
                             <Typography variant="h6" component="h2">
                                     Manage Accounts
                             </Typography>
                         </Stack>
                     </Paper>
                 
-            </Box>
+            </Box></Grid>
+            <Grid item xs={12} md={6}>
             <Box m={5}>
                 
-                    <Paper sx={{height:"200px",width:"300px"}} elevation={12}>
+                    <Paper sx={{height:"300px",width:"400px",marginLeft:"auto",marginRight:"auto"}} elevation={12}>
                         <Stack alignItems="center">
-                            <CoPresentIcon sx={{marginTop:3,fontSize:100}}/>
+                            <CoPresentIcon sx={{marginTop:9,fontSize:100}}/>
                             <Typography variant="h6" component="h2">
                                     Attendance
                             </Typography>
@@ -55,11 +58,13 @@ function Dashboard() {
                     </Paper>
                 
             </Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
             <Box m={5}>
                 
-                    <Paper sx={{height:"200px",width:"300px"}} elevation={12}>
+                    <Paper sx={{height:"300px",width:"400px",marginLeft:"auto",marginRight:"auto"}} elevation={12}>
                         <Stack alignItems="center">
-                            <HealthAndSafetyIcon sx={{marginTop:3,fontSize:100}}/>
+                            <HealthAndSafetyIcon sx={{marginTop:9,fontSize:100}}/>
                             <Typography variant="h6" component="h2">
                                     Safety
                             </Typography>
@@ -67,6 +72,7 @@ function Dashboard() {
                     </Paper>
                 
             </Box>
+            </Grid>
             
             
             </Grid>
