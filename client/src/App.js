@@ -9,6 +9,7 @@ import Violations from "./Pages/Violations";
 import Dashboard from "./Pages/Dashboard";
 import FaceRecognition from './Pages/FaceRecognition'
 import Location from "./Pages/Location";
+import Safety from "./Pages/Safety"
 
 
 
@@ -23,6 +24,7 @@ function App() {
             <Route index element={<Landing />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/video" element={<FaceRecognition/>}/>
+            <Route path="/safety" element={<Safety/>}/>
               <Route path="/location" element={<Location/>}/>
             <Route path="/workermanager" element={<WorkerManager />} />
             <Route path="/attendance" element={<Attendance />} />
