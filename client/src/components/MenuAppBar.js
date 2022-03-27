@@ -61,14 +61,14 @@ export default function MenuAppBar() {
             <Link to="/attendance" style={{ textDecoration: 'none'  , color:'white'}}>Attendance</Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-            <Link to="/violations" style={{ textDecoration: 'none' , color:'white' }}>Violations</Link>
+            <Link to="/safety" style={{ textDecoration: 'none' , color:'white' }}>Violations</Link>
           </Typography>
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1}}
           >
-            <Link to="/workermanager" style={{ textDecoration: 'none' , color:'white' }}>Manage Workers</Link>
+            <Link to="/workermanager" style={{ textDecoration: 'none' , color:'white' }}>Manage Staff</Link>
           </Typography>
           {auth && (
             <div>
