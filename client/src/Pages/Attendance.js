@@ -174,37 +174,52 @@ function Attendance() {
     setAttendance(data)
   }
   
-  function renderRows(){
-    let res=[]
-    for(let i=0;i<dateValues.length;i++){
-        res.push(
-          
-          <StyledTableRow key={i}>
-            <StyledTableCell>{i}</StyledTableCell>
-            <StyledTableCell align="center">{dateValues[i].name}</StyledTableCell>
-            <StyledTableCell align="center">{attendance[i].attendance?"Present":"Absent"}</StyledTableCell>
-          </StyledTableRow>
-        )
-
+  function renderRows() {
+    let res = [];
+    for (let i = 0; i < dateValues.length; i++) {
+      res.push(
+        <StyledTableRow key={i}>
+          <StyledTableCell><Typography variant="h5" fontSize="1.2rem">{i} </Typography></StyledTableCell>
+          <StyledTableCell align="center">
+            <Typography variant="h5" fontSize="1.2rem">
+              {dateValues[i].name}
+            </Typography>
+          </StyledTableCell>
+          <StyledTableCell align="center">
+          <Typography variant="h5" fontSize="1.2rem">
+            {attendance[i].attendance ? "Present" : "Absent"}
+            </Typography>
+          </StyledTableCell>
+        </StyledTableRow>
+      );
     }
-    return res
+    return res;
   }
 
-
-  function renderRow(){
-    let res=[]
-    for(let i=0;i<attendance.length;i++){
-        res.push(
-          
-          <StyledTableRow key={i}>
-            <StyledTableCell>{i}</StyledTableCell>
-            <StyledTableCell align="center">{attendance[i].fname} {attendance[i].lname}</StyledTableCell>
-            <StyledTableCell align="center"><Switch onChange={()=>attendanceChanger(i)} checked={attendance[i].attendance}/></StyledTableCell>
-          </StyledTableRow>
-        )
-
+  function renderRow() {
+    let res = [];
+    for (let i = 0; i < attendance.length; i++) {
+      res.push(
+        <StyledTableRow key={i}>
+          <StyledTableCell><Typography variant="h5" fontSize="1.2rem">{i} </Typography> </StyledTableCell>
+          <StyledTableCell align="center">
+            <Typography variant="h5" fontSize="1.2rem">
+              {" "}
+              {attendance[i].fname} {attendance[i].lname}{" "}
+            </Typography>
+          </StyledTableCell>
+          <StyledTableCell align="center">
+          <Typography variant="h5" fontSize="1.2rem">
+            <Switch
+              onChange={() => attendanceChanger(i)}
+              checked={attendance[i].attendance}
+            />
+            </Typography>
+          </StyledTableCell>
+        </StyledTableRow>
+      );
     }
-    return res
+    return res;
   }
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -215,89 +230,109 @@ function Attendance() {
       fontSize: 14,
     },
   }));
-  
+
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
     // hide last border
-    '&:last-child td, &:last-child th': {
+    "&:last-child td, &:last-child th": {
       border: 0,
     },
   }));
   return (
     <Grid container spacing={2}>
       <Box mt={10} ml={5}>
-        <span>{initializing ? 'Initializing' : 'Ready' }</span>
+        <span>{initializing ? "Initializing" : "Ready"}</span>
         <div className="display-flex justify-content-center">
-        <video ref={video} autoPlay muted height={videoHeight} width={videoWidth} onPlay={handleVideoOnPlay}/>
-        <canvas ref={canvasRef} className="position-absolute"/>
+          <video
+            ref={video}
+            autoPlay
+            muted
+            height={videoHeight}
+            width={videoWidth}
+            onPlay={handleVideoOnPlay}
+          />
+          <canvas ref={canvasRef} className="position-absolute" />
         </div>
-        </Box>
-      <Box m={10}>
-      <Typography type="h4" variant="h6">
-          Attendance Setter
-      </Typography>
-      <br/>
-        <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 1000,  }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>ID</StyledTableCell>
-              <StyledTableCell align="center">Name</StyledTableCell>
-              <StyledTableCell align="center">Attendance&nbsp;</StyledTableCell>
-              
-            </TableRow>
-          </TableHead>
-          <TableBody>
-              {renderRow()}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <br/>
-      <br/>
-      
-    
-      <Button variant="contained" onClick={submitAttendance}>Submit</Button>
-      <br/>
-      <br/>
-      <br/>
-        <hr/>
-        <Typography type="h4" variant="h6">
-          Attendance Checker
-      </Typography>
-      <br/>
-          <input type="date" id="start" name="date" onChange={handleDate} value={dateVal} >
-
-          </input>
-          <br/><br/>
-          <Button variant="contained" onClick={submitDate}>Submit</Button>
-         
-
       </Box>
-      {viewer && <Box m={10}>
+      <Box m={10}>
+        <Typography type="h4" variant="h4">
+          Attendance Setter
+        </Typography>
+        <br />
         <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 800,  }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>ID</StyledTableCell>
-              <StyledTableCell align="center">Name</StyledTableCell>
-              <StyledTableCell align="center">Attendance&nbsp;</StyledTableCell>
-              
-            </TableRow>
-          </TableHead>
-          <TableBody>
-              {renderRows()}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      
-       
+          <Table sx={{ minWidth: 1000 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>ID</StyledTableCell>
+                <StyledTableCell align="center">Name</StyledTableCell>
+                <StyledTableCell align="center">
+                  Attendance&nbsp;
+                </StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>{renderRow()}</TableBody>
+          </Table>
+        </TableContainer>
+        <br />
+        <br />
 
-      </Box>}
-
+        <Button
+          variant="contained"
+          size="large"
+          sx={{ float: "right", width: "150px" }}
+          onClick={submitAttendance}
+        >
+          Submit
+        </Button>
+        <br />
+        <br />
+        <br />
+        <hr />
+        <Typography type="h4" variant="h5">
+          Attendance Checker
+        </Typography>
+        <br />
+        <input
+          type="date"
+          id="start"
+          name="date"
+          onChange={handleDate}
+          value={dateVal}
+          style={{ width: "30%", height: "30px" }}
+        ></input>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{ float: "right", width: "150px" }}
+          onClick={submitDate}
+        >
+          Check
+        </Button>
+      </Box>
+      {viewer && (
+        <Box m={10} sx={{ m: "auto", alignContent: "center" , mb:'30px'}}>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 800 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>ID</StyledTableCell>
+                  <StyledTableCell align="center">Name</StyledTableCell>
+                  <StyledTableCell align="center">
+                    Attendance&nbsp;
+                  </StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody >
+                {renderRows()}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
+      )}
     </Grid>
-  )
+  );
 }
 
 export default Attendance

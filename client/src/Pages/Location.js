@@ -30,19 +30,37 @@ export default function Location(){
        let res=[]
          for(let i=0;i<locationData.length;i++){
              res.push(
-                <Box m={5} onClick={()=>navigate('/workermanager')}>
-                    <Paper sx={{length:"250px",width:"250px"}}elevation={12}>
-                        <img style={{width:"250px"}} src={locationData[i].img}/>
-                        <Typography sx={{marginLeft:"10px"}} variant="h6" component="div" gutterBottom>
-                            Longitude : {locationData[i].long}
-                        </Typography>
-                        <Typography sx={{marginLeft:"10px"}}  variant="h6" component="div" gutterBottom>
-                            Latitude : {locationData[i].lati}
-                        </Typography>
-
-                    </Paper>
-                 </Box>
-             )
+               <Box
+                 m={5}
+                 onClick={() => navigate("/workermanager")}
+                 sx={{
+                   "&:hover": {
+                     backgroundColor: "primary.main",
+                     opacity: [0.9, 0.8, 0.7],
+                   },
+                 }}
+               >
+                 <Paper sx={{ length: "300px", width: "300px" }} elevation={12}>
+                   <img style={{ width: "300px" }} src={locationData[i].img} />
+                   <Typography
+                     sx={{ marginLeft: "10px" }}
+                     variant="h6"
+                     component="div"
+                     gutterBottom
+                   >
+                     Longitude : {locationData[i].long}
+                   </Typography>
+                   <Typography
+                     sx={{ marginLeft: "10px" }}
+                     variant="h6"
+                     component="div"
+                     gutterBottom
+                   >
+                     Latitude : {locationData[i].lati}
+                   </Typography>
+                 </Paper>
+               </Box>
+             );
              
          }
          return res
@@ -85,8 +103,8 @@ export default function Location(){
             
         </Grid>
         
-        <div className="locationform">
-        <Stack spacing={2}>
+        <div className="locationform" >
+        <Stack spacing={3} >
         <TextField
           required
           id="outlined-required"
